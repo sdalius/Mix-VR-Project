@@ -13,7 +13,12 @@ public class ActionOnHoleHit : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        SceneManager.LoadScene("JalilTest", LoadSceneMode.Single);
+        var ball = other.gameObject.GetComponent<Ball>();
+
+        if(ball)
+        {
+            SceneManager.LoadScene("JalilTest", LoadSceneMode.Single);
+        }
     }
 
     // Update is called once per frame
