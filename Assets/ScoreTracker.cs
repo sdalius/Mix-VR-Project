@@ -36,6 +36,12 @@ public class ScoreTracker : MonoBehaviour
     {
         currentScores = GameObject.FindGameObjectsWithTag("Level Score");
         totalScores = GameObject.FindGameObjectsWithTag("Total Score");
+        var levelName = GameObject.FindGameObjectWithTag("LevelName").GetComponent<TextMeshProUGUI>();
+
+        if (levelName)
+        {
+            levelName.text = SceneManager.GetActiveScene().name;
+        }
 
         if(currentScores.Length == 0)
         {
@@ -66,7 +72,7 @@ public class ScoreTracker : MonoBehaviour
         foreach (GameObject score in totalScores)
         {
             var text = score.GetComponent<TextMeshProUGUI>();
-            text.text = "Total: " + totalScore;
+            text.text = "Total Score: " + totalScore;
         }
     }
 
@@ -77,7 +83,7 @@ public class ScoreTracker : MonoBehaviour
         foreach (GameObject score in currentScores)
         {
             var text = score.GetComponent<TextMeshProUGUI>();
-            text.text = "Level: " + levelScore;
+            text.text = "Level Score: " + levelScore;
         }
     }
 }

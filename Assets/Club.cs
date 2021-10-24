@@ -8,6 +8,11 @@ public class Club : MonoBehaviour
     [SerializeField]
     float collisionTimeTolerance = 0.5f;
 
+    [SerializeField]
+    AudioClip clubHitBall;
+
+    AudioSource audioSource;
+
     private ScoreTracker scoreTracker;
     private float lastHitTime;
     // Start is called before the first frame update
@@ -15,6 +20,7 @@ public class Club : MonoBehaviour
     {
         scoreTracker = FindObjectOfType<ScoreTracker>();
         lastHitTime = Time.realtimeSinceStartup;
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -26,6 +32,8 @@ public class Club : MonoBehaviour
             //Avoid multiple collisions with one strike
             if(lastHitTime < Time.time - collisionTimeTolerance)
             {
+                audioSource.clip = clubHitBall;
+                audioSource.Play();
                 IncrementScore();
             }
         }
