@@ -13,14 +13,19 @@ public class Club : MonoBehaviour
 
     AudioSource audioSource;
 
+    Collider stopCollider;
+
     private ScoreTracker scoreTracker;
     private float lastHitTime;
+
     // Start is called before the first frame update
     void Start()
     {
         scoreTracker = FindObjectOfType<ScoreTracker>();
         lastHitTime = Time.realtimeSinceStartup;
         audioSource = GetComponent<AudioSource>();
+        stopCollider = GetComponent<BoxCollider>();
+        audioSource.clip = clubHitBall;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -32,7 +37,6 @@ public class Club : MonoBehaviour
             //Avoid multiple collisions with one strike
             if(lastHitTime < Time.time - collisionTimeTolerance)
             {
-                audioSource.clip = clubHitBall;
                 audioSource.Play();
                 IncrementScore();
             }

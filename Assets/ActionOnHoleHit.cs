@@ -17,7 +17,8 @@ public class ActionOnHoleHit : MonoBehaviour
 
         if(ball)
         {
-            SceneManager.LoadScene("JalilTest", LoadSceneMode.Single);
+            //SceneManager.LoadScene("JalilTest", LoadSceneMode.Single);
+            Debug.Log("It is in");
         }
     }
 

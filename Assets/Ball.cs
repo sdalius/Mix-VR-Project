@@ -15,7 +15,7 @@ public class Ball : MonoBehaviour
         stopForce = GetComponent<Rigidbody>();
     }
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if(stopForce.velocity.sqrMagnitude < MinSpeed && stopForce.velocity != Vector3.zero && !bOutOfBounds)
         {
@@ -50,4 +50,6 @@ public class Ball : MonoBehaviour
             setbOutOfBounds(false);
         }
     }
+
+
 }
