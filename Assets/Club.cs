@@ -13,10 +13,9 @@ public class Club : MonoBehaviour
 
     AudioSource audioSource;
 
-    Collider stopCollider;
-
     private ScoreTracker scoreTracker;
     private float lastHitTime;
+    private Vector3 shootDirection;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +23,6 @@ public class Club : MonoBehaviour
         scoreTracker = FindObjectOfType<ScoreTracker>();
         lastHitTime = Time.realtimeSinceStartup;
         audioSource = GetComponent<AudioSource>();
-        stopCollider = GetComponent<BoxCollider>();
         audioSource.clip = clubHitBall;
     }
 

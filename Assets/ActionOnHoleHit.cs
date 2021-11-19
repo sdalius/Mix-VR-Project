@@ -6,9 +6,11 @@ using UnityEngine.SceneManagement;
 public class ActionOnHoleHit : MonoBehaviour
 {
     // Start is called before the first frame update
+
+    private ScoreTracker savethis;
     void Start()
     {
-        
+        savethis = FindObjectOfType<ScoreTracker>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -17,8 +19,7 @@ public class ActionOnHoleHit : MonoBehaviour
 
         if(ball)
         {
-            //SceneManager.LoadScene("JalilTest", LoadSceneMode.Single);
-            Debug.Log("It is in");
+            SceneManager.LoadScene("Level 2");
         }
     }
 

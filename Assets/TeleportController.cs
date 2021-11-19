@@ -10,6 +10,8 @@ public class TeleportController : MonoBehaviour
     public GameObject teleportationGameObject;
 
     public InputActionReference teleportActivatationReference;
+    
+    
 
 
 
@@ -21,6 +23,8 @@ public class TeleportController : MonoBehaviour
     private void Start() {
         teleportActivatationReference.action.performed += TeleportModeActivate;
         teleportActivatationReference.action.canceled += TeleportModeCancel;
+        
+        //DontDestroyOnLoad(transform.root.gameObject);
     }
 
     private void TeleportModeActivate(InputAction.CallbackContext obj) =>  onTeleportActivate.Invoke(); 

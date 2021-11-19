@@ -8,6 +8,7 @@ TagManager:
   - Level Score
   - OutOfBounds
   - LevelName
+  - HoleTitle
   layers:
   - Default
   - TransparentFX

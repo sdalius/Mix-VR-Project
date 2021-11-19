@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,17 +7,24 @@ public class Ball : MonoBehaviour
 {
     [SerializeField]
     public float MinSpeed;
+    [SerializeField]
+    public float maxSpeed = 200f;
     private Vector3 previousBallPosition;
     private Rigidbody stopForce;
     private bool bOutOfBounds = false;
     void Start()
     {
-        previousBallPosition = this.transform.position;
+        previousBallPosition = transform.position;
         stopForce = GetComponent<Rigidbody>();
     }
     // Update is called once per frame
     void FixedUpdate()
     {
+        if(stopForce.velocity.magnitude > maxSpeed)
+        {
+            stopForce.velocity = stopForce.velocity.normalized * maxSpeed;
+        }
+
         if(stopForce.velocity.sqrMagnitude < MinSpeed && stopForce.velocity != Vector3.zero && !bOutOfBounds)
         {
             setLastPosition();
